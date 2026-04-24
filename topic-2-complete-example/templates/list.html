@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pet List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-body-tertiary">
+    <div class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-1">Pet Records</h1>
+                <p class="text-body-secondary mb-0">A simple Flask template view backed by a small data layer.</p>
+            </div>
+            <div class="d-flex gap-2">
+                <a class="btn btn-outline-secondary" href="/reset">Reset Sample Data</a>
+                <a class="btn btn-primary" href="/create">Create New Pet</a>
+            </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover mb-0 align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Age</th>
+                                <th>Owner</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pet in pets %}
+                            <tr>
+                                <td><code>{{ pet['id'] }}</code></td>
+                                <td>{{ pet['name'] }}</td>
+                                <td>{{ pet['type'] }}</td>
+                                <td>{{ pet['age'] }}</td>
+                                <td>{{ pet['owner'] }}</td>
+                                <td class="text-end">
+                                    <a class="btn btn-sm btn-outline-primary" href="/update/{{pet['id']}}">Update</a>
+                                    <a class="btn btn-sm btn-outline-danger" href="/delete/{{pet['id']}}">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            {% if not pets %}
+                            <tr>
+                                <td class="text-body-secondary text-center py-4" colspan="6">No pets yet. Create one to get started.</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

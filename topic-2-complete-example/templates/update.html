@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Update Pet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-body-tertiary">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h1 class="h3 mb-1">Update Pet</h1>
+                                <p class="text-body-secondary mb-0">Edit an existing pet record.</p>
+                            </div>
+                            <a class="btn btn-outline-secondary" href="/list">Back to List</a>
+                        </div>
+
+                        <form action="/update/{{data['id']}}" method="post">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="name">Name</label>
+                                    <input class="form-control" id="name" name="name" value="{{data['name']}}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="type">Type</label>
+                                    <input class="form-control" id="type" name="type" value="{{data['type']}}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="age">Age</label>
+                                    <input class="form-control" id="age" name="age" value="{{data['age']}}" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="owner">Owner</label>
+                                    <input class="form-control" id="owner" name="owner" value="{{data['owner']}}" />
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-2 mt-4">
+                                <button class="btn btn-primary" type="submit">Save Changes</button>
+                                <a class="btn btn-outline-secondary" href="/list">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
